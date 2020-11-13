@@ -1,6 +1,10 @@
+require_relative "password"
+
 class Student
 
-	attr_accessor :first_name, :last_name, :email, :username
+	include Password
+
+	attr_accessor :first_name, :last_name, :email, :username, :password
 
 	@first_name
 	@last_name
@@ -22,4 +26,6 @@ class Student
 end
 
 christ = Student.new("Christ", "Some last name", "asd@example.com", "someName", "password1")
-puts christ
+
+hash_password = christ.create_hash_digest(christ.password)
+puts hash_password
